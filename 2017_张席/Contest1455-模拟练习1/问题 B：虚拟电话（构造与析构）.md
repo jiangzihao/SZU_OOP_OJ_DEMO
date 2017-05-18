@@ -104,19 +104,16 @@ public:
 };
 
 int main () {
-    int number[NUM], status[NUM];
-    char type[NUM];
-    string name[NUM];
+    int number, status;
+    char type;
+    string name;
     int i;
+    // 利用指针数组创建对象
+    VirtualTel *virtualTels[3];
     for (i = 0; i < NUM; i++) {
-        cin >> number[i] >> type[i] >> status[i] >> name[i];
+        cin >> number >> type >> status >> name;
+        virtualTels[i] = new VirtualTel(number, type, status, name);
     }
-    // 通过匿名对象创建一个对象数组
-    VirtualTel virtualTels[3] = {
-        VirtualTel(number[0], type[0], status[0], name[0]),
-        VirtualTel(number[1], type[1], status[1], name[1]),
-        VirtualTel(number[2], type[2], status[2], name[2])
-    };
     int t;
     cin >> t;
     while (t--) {
@@ -126,13 +123,15 @@ int main () {
         // 标志变量flag，用于判断是否查询成功
         int flag = 0;
         for (i = 0; i < NUM; i++) {
-            if (virtualTels[i].checkNumber(numberChecked)) {
-                virtualTels[i].print();
+            if (virtualTels[i]->checkNumber(numberChecked)) {
+                virtualTels[i]->print();
                 flag = 1;
             }
         }
         if (!flag) cout << "wrong number." << endl;
     }
+    // 倒序释放
+    for (i = NUM - 1; i >= 0; i--) delete virtualTels[i];
     return 0;
 }
 ```
