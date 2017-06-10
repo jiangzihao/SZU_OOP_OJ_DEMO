@@ -50,20 +50,20 @@ public:
     void show() {
         cout << "Real=" << x << " Image=" << y << endl;
     }
-    friend Complex operator *(Complex &t1, Complex &t2);
-    friend Complex operator -(Complex &t1, Complex &t2);
-    friend Complex operator +(Complex &t1, Complex &t2);
+    friend Complex operator *(const Complex &t1, const Complex &t2);
+    friend Complex operator -(const Complex &t1, const Complex &t2);
+    friend Complex operator +(const Complex &t1, const Complex &t2);
 };
 
-Complex operator *(Complex &t1, Complex &t2) {
+Complex operator *(const Complex &t1, const Complex &t2) {
     return Complex(t1.x * t2.x - t1.y * t2.y, t1.x * t2.y + t1.y * t2.x);
 }
 
-Complex operator +(Complex &t1, Complex &t2) {
+Complex operator +(const Complex &t1, const Complex &t2) {
     return Complex(t1.x + t2.x, t1.y + t2.y);
 }
 
-Complex operator -(Complex &t1, Complex &t2) {
+Complex operator -(const Complex &t1, const Complex &t2) {
     return Complex(t1.x - t2.x, t1.y - t2.y);
 }
 
