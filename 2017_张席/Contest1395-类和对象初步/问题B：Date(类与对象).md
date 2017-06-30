@@ -105,7 +105,7 @@ void Date::print () {
 
 void Date::addOneDay () {
     // 闰年的判断标识符
-    bool leapYear = year % 400 || year % 100 && year % 4 == 0;
+    bool leapYear = year % 400 == 0 || year % 100 && year % 4 == 0;
     // 保存每个月份的天数
     int monthTable[12] = {31, 28 + leapYear, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     day++;
