@@ -47,8 +47,10 @@ using namespace std;
 template<class T>
 void find(T a[],T b[],int n) {
     T temp = new T[2 * n + 1];
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
+        temp[i] = a[i];
         temp[n + i] = b[i];
+    }
     for (int i = 0; i < 2 * n; i++)
         cout << T[i]
     cout << endl;
